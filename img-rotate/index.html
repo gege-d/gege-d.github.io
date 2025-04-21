@@ -2,15 +2,47 @@
 <html lang="de">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Bild physisch drehen</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      margin: 20px;
+      max-width: 100%;
+      overflow-x: hidden;
+    }
+
+    h2 {
+      font-size: 1.5em;
+      text-align: center;
+    }
+
+    canvas {
+      max-width: 100%;
+      height: auto;
+      display: block;
+      margin: 0 auto;
+      border: 1px solid #ccc;
+    }
+
+    button {
+      margin: 5px 5px 15px 0;
+      padding: 10px;
+      font-size: 1em;
+    }
+
+    input[type="file"] {
+      margin-bottom: 15px;
+    }
+  </style>
 </head>
 <body>
   <h2>Bild physisch drehen</h2>
   <input type="file" id="imageInput" accept="image/*">
-  <br><br>
+  <br>
   <button onclick="rotateImage()">90&deg; im Uhrzeigersinn drehen</button>
   <button onclick="downloadImage()">Bild herunterladen</button>
-  <br><br>
+  <br>
   <canvas id="canvas"></canvas>
 
   <script>
@@ -55,8 +87,8 @@
 
     function downloadImage() {
       const link = document.createElement('a');
-      link.download = 'rotated.png';
-      link.href = canvas.toDataURL('image/png');
+      link.download = 'rotated.jpg';
+      link.href = canvas.toDataURL('image/jpeg', 0.9);
       link.click();
     }
   </script>
